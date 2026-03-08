@@ -1,3 +1,26 @@
+## 📃 API Documentation
+
+This project provides interactive API documentation using Swagger.
+
+After starting the application, you can access the documentation at:
+
+http://localhost:8080/swagger-ui.html
+
+The OpenAPI specification is available at:
+
+http://localhost:8080/v3/api-docs
+
+## 💻 Run the application
+
+To run the application, first open the folder which contains this repository and then run these 3 commands in the following order:
+<br>
+<br>
+  <b>1.</b> cd ./braguia
+  <br>
+  <b>2.</b> docker-compose up -d
+  <br>
+  <b>3.</b> .\gradlew bootrun
+
 ## 🎯 System objective
 
 Allow clients to:
@@ -11,7 +34,7 @@ Allow clients to:
 
 
 ## 🧱 Basic system structure
-👤 Client<br>
+👤 Clients<br>
  &nbsp; |---------------> 💳 Accounts<br> 
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |--------------> 💸 Transactions
 
