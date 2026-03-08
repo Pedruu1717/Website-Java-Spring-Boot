@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/account")
+@Tag(name="Accounts", description="Bank Accounts management APIs")
 public class AccountController {
     private final AccountService accountService;
 
@@ -17,6 +21,7 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    @Operation(summary = "Create a bank account for an existing client")
     @PostMapping("/add")
     public String addAccount(@RequestParam String number, @RequestParam String agency, @RequestParam BigDecimal balance, @RequestParam AccountType type, @RequestParam Long client_id) {
         boolean result = accountService.addAccount(number, agency, balance, type, client_id);
@@ -24,6 +29,7 @@ public class AccountController {
         else { return "Could not add account"; }
     }
 
+    @Operation(summary = "Get a list of all of the bank's accounts")
     @GetMapping("/all")
     public Iterable<Account> getAllAccounts() {
         Iterable<Account> accounts = accountService.getAllAccounts();
@@ -31,6 +37,7 @@ public class AccountController {
         return accounts;
     }
 
+    @Operation(summary = "Get the amount of money available in a bank account at the current time")
     @GetMapping("/statement")
     public BigDecimal getAccountStatement(@RequestParam Long id) {
         BigDecimal statement = accountService.getAccountStatement(id);

@@ -12,31 +12,40 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "account")
+@Schema(description="Account entity")
 public class Account {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Schema(description="Unique identifier of the account", example="1")
     private Long id;
 
     @Column(nullable = false, unique = true)
+    @Schema(description="Unique number of the account", example="1234567890")
     private String number;
 
     @Column(nullable = false, unique = false)
+    @Schema(description="Bank agency of the account", example="Agency of central Braga")
     private String agency;
 
     @Column(nullable = false, unique = false, precision = 19, scale = 2)
+    @Schema(description="Money in the account", example="25000")
     private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = false)
+    @Schema(description="The type of account", example="SAVINGS or CURRENT")
     private AccountType type;
 
     @ManyToOne
     @JoinColumn(name="client_id", nullable = false, unique = false)
+    @Schema(description="Unique identifier of the client that owns this account", example="1")
     private Client client;
 
     public Long getId() {
