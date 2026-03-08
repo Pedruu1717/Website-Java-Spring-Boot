@@ -1,5 +1,10 @@
+# Bank API - Current Account System
+
+A RESTful banking API built with Spring Boot that supports
+account creation, deposits, withdrawals, and transfers.
+
 ## 🔧 Architecture
-Controller → Service → Repository
+Controller → Service → Repository → Entity
 
 ## 📃 API Documentation
 
