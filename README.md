@@ -40,38 +40,6 @@ Allow clients to:
  &nbsp; |---------------> 💳 Accounts<br> 
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |--------------> 💸 Transactions
 
----
-
-## 🔌 API endpoints (REST example)
-
-### Create client
-
-```
-POST /api/client/add
-```
-
-### Create account
-
-```
-POST /api/account/add
-```
-
-### Deposit, Withdrawal and Transfer
-
-
-transfer_type = <b>DEPOSIT</b> or <b>WITHDRAWAL</b> or <b>TRANSFER</b>
-```
-POST /api/transaction/add?type={transfer_type}
-```
-
-### View statements
-
-```
-GET /transactions
-```
-
----
-
 ## 🧠 Bank rules
 
 * ❌ You cannot withdraw if your balance is insufficient.
