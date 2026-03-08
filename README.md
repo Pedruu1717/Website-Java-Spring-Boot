@@ -1,4 +1,4 @@
-# Bank API - Current Account System
+# 💲 Bank API - Current Account System
 
 A RESTful banking API built with Spring Boot that supports
 account creation, deposits, withdrawals, and transfers.
