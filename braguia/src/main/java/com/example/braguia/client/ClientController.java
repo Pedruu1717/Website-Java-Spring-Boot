@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import jakarta.validation.Valid;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,7 +22,7 @@ public class ClientController {
 
     @Operation(summary = "Add a client to the bank")
     @PostMapping("/add")
-    public String addClient(@RequestParam String name, @RequestParam String email, @RequestParam String password, @RequestParam String NIF, @RequestParam String NIC) {
+    public String addClient(@Valid @RequestParam String name, @Valid @RequestParam String email, @Valid @RequestParam String password, @Valid @RequestParam String NIF, @Valid @RequestParam String NIC) {
         boolean result = clientService.addClient(name, email, password, NIF, NIC);
 
         if (result) { return "Saved"; }

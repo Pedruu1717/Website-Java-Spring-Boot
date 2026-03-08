@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 
@@ -28,27 +29,33 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @NotNull
     @Schema(description="Unique identifier of the client", example="1")
     private Long id;
 
     @Column(nullable = false, unique = false)
+    @NotNull
     @Schema(description="Name of the client", example="Pedro Melo")
     private String name;
 
     @Column(nullable = false, unique = false)
     @Email
+    @NotNull
     @Schema(description="Email of the client", example="pedromelo@gmail.com")
     private String email;
 
     @Column(nullable = false, unique = false)
+    @NotNull
     @Schema(description="The password the client uses to be able to perform actions on his account(s)", example="verySecret1!")
     private String password;
 
     @Column(nullable = false, unique = true)
+    @NotNull
     @Schema(description="Taxpayer number of the client", example="145623987")
     private String NIF;
 
     @Column(nullable = false, unique = true)
+    @NotNull
     @Schema(description="Identity card number of the client", example="45987620")
     private String NIC;
 

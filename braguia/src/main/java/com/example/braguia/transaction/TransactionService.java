@@ -7,6 +7,8 @@ import com.example.braguia.client.ClientRepository;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.lang.Exception;
 import java.time.LocalDateTime;
 
@@ -44,6 +46,7 @@ public class TransactionService {
         return transactionRepository.findAll(); // JSON or XML
     }
 
+    @Transactional
     public boolean addTransaction(TransactionType type, BigDecimal value, LocalDateTime date, Long source_account_id, Long destination_account_id, Long client_id) {
         Optional<Account> source_account = accountRepository.findById(source_account_id);
         Optional<Account> destination_account = accountRepository.findById(destination_account_id);

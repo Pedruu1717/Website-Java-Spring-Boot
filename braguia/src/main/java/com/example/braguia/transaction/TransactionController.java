@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import jakarta.validation.Valid;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +25,7 @@ public class TransactionController {
 
     @Operation(summary = "Create a transaction between two accounts")
     @PostMapping("/add")
-    public String addTransaction(@RequestParam TransactionType type, @RequestParam BigDecimal value, @RequestParam Long source_account_id, @RequestParam Long destination_account_id, @RequestParam Long client_id) {
+    public String addTransaction(@Valid @RequestParam TransactionType type, @Valid @RequestParam BigDecimal value, @Valid @RequestParam Long source_account_id, @Valid @RequestParam Long destination_account_id, @Valid @RequestParam Long client_id) {
         boolean result = transactionService.addTransaction(type, value, LocalDateTime.now(), source_account_id, destination_account_id, client_id);
         if (result) { return "Saved"; }
         else { return "Could not add transaction"; }
